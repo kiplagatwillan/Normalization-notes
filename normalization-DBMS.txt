@@ -65,13 +65,82 @@ Partial dependencies:
 Examples:
 
 
-3. Third normal form(3NF) - A relation is third normal form, if there is no transitive dependency for non- prime attributes as well as it is in second normal form. A relation is in 3NF if at least  one of the following conditions holds in every non-trivial funtion -> y
-   -  is super key.
-   -Y is prime attribute (each element of Y is part of some candidate key) 
+3. Third normal form(3NF) - A relation is third normal form, if there is no transitive dependency for non- prime attributes as well as it is in second normal form. 
+  
+                           -A relation is in 3NF if at least  one of the following conditions holds in every non-trivial funtion X-> y
+                                    - X is super key.
+                                    -Y is prime attribute (each element of Y is part of some candidate key) 
+
+
+    ACID Properties in DBMS
+
+- ACID stands for Atomicity, Consistency, Isolation, and Durability.
+
+- These four key properties define how a transaction should be processed in a reliable and predictable manner, ensuring that the database remains consistent, even in cases of failures or concurrent accesses.
+
+(1). Atomicity
+
+- means that either the entire transaction completes fully or doesn't execute at all. 
+
+- There is no in-between state i.e transactions do not occur partially
+
+- If a transaction has multiple operations, and one of them fails, the whole transaction is rolled back, leaving the database unchanged. \
+
+- This avoids partial updates that can lead to inconsistency.
+
+- This avoids partial updates that can lead to inconsistency.
+  
+(a) Commit: If the transaction is successful, the changes are permanently applied.
+  
+(b)Abort/Rollback: If the transaction fails, any changes made during the transaction are discarded.
 
 
 
+(2). Consistency
+
+-Consistency ensures that a database remains in a valid state before and after a transaction 
+
+-  guarantees that any transaction will take the database from one consistent state to another, maintaining the rules and constraints defined for the data. In simple terms, a transaction should only take the database from one valid state to another
+ 
+- If a transaction violates any database rules or constraints, it should be rejected, ensuring that only consistent data exists after the transaction.
 
 
+(3). Isolation
+
+- ensures that multiple transactions can occur concurrently without leading to the inconsistency of the database state. Transactions occur independently without interference.
+
+- Changes occurring in a particular transaction will not be visible to any other transaction until that particular change in that transaction is written to memory or has been committed.
+
+
+
+- This property ensures that when multiple transactions run at the same time, the result will be the same as if they were run one after another in a specific order.
+
+(4). Durability
+
+- This property ensures that once the transaction has completed execution, the updates and modifications to the database are stored in and written to disk and they persist even if a system failure occurs.
+
+- In the event of a failure, the DBMS can recover the database to the state it was in after the last committed transaction, ensuring that no data is lost.
+ 
+
+
+ Advantages of ACID Properties in DBM
+
+1. Data Consistency: ACID properties ensure that the data remains consistent and acurate after any transaction execution.
+
+2. Data Integrity: It maintains the integrity of the data by ensuring that any changes to the database are permanent and cannot be lost.
+
+3. Concurrency Control: ACID properties help to manage multiple transactions occurring concurrently by preventing interference between them.
+
+4. Recovery: ACID properties ensure that in case of any failure or crash, the system can recover the data up to the point of failure or crash.
+
+
+ Disadvantages of ACID Properties in DBMS
+
+
+1. Performance Overhead: ACID properties can introduce performance costs, especially when enforcing isolation between transactions or ensuring atomicity.
+
+2. Complexity: Maintaining ACID properties in distributed systems (like microservices or cloud environments) can be complex and may require sophisticated solutions like distributed locking or transaction coordination.
+
+3. Scalability Issues: ACID properties can pose scalability challenges, particularly in systems with high transaction volumes, where traditional relational databases may struggle under load.
 
 
